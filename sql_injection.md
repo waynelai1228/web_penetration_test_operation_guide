@@ -9,12 +9,13 @@ Observe SQL payloads returns unconventional HTTP codes.
 ### UNION attack
 Find number of fields included in the original query.
 
-** Example **
+**Example**
 ``` SQL
 '+UNION+SELECT+NULL,NULL--
 ```
 
-** Oracle Database **
+**Oracle Database**
+
 Oracle database needs to contain a valid table for query.
 `dual` table can be used to select constant expression from Oracle database.
 
