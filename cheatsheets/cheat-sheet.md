@@ -112,7 +112,7 @@
             Oracle
         </th>
         <td>
-            <code>SELECT banner FROM v$version</code>\
+            <code>SELECT banner FROM v$version</code><br />
             <code>SELECT version FROM v$instance</code>
         </td>
     </tr>
