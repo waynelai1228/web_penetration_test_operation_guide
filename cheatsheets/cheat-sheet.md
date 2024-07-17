@@ -203,7 +203,7 @@
 <div>
     <h4>Additional</h4>
     <p>
-        Check <a href="https://learn.microsoft.com/en-us/sql/relational-databases/system-information-schema-views/tables-transact-sql?view=sql-server-ver16">this website</a> for column names to use in schema queries. <code>TABLE_NAME</code> is likely the most useful column.
+        Check <a href="https://learn.microsoft.com/en-us/sql/relational-databases/system-information-schema-views/tables-transact-sql?view=sql-server-ver16">this website</a> for column names to use in schema queries. <code>TABLE_NAME</code> is likely the most useful column for <code>information_schema.tables</code> and <code>COLUMN_NAME</code> the most useful column for <code>information_schema.columns</code>.
     </p>
 </div>
 
