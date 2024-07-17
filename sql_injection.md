@@ -6,7 +6,7 @@ Observe SQL payloads returns unconventional HTTP codes.
 
 ## Exploitation
 
-### UNION attack
+### UNION Attack
 Find number of fields included in the original query.
 
 **Example**
@@ -22,3 +22,5 @@ Oracle database needs to contain a valid table for query.
 ```
 '+UNION+SELECT+NULL,NULL+FROM+dual--
 ```
+
+### Fingerprinting the Database
