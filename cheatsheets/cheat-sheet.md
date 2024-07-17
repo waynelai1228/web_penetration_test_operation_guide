@@ -214,9 +214,10 @@
         <th>
             Microsoft
         </th>
-        <td><code>SELECT 'foo' WHERE 1 = (SELECT 'secret')<br>
-            <br>&gt; Conversion failed when converting the varchar value 'secret' to data type int.
-        </code></td>
+        <td>
+            <code>SELECT 'foo' WHERE 1 = (SELECT 'secret')<br>
+            <br>&gt; Conversion failed when converting the varchar value 'secret' to data type int.</code>
+        </td>
     </tr>
     <tr>
         <th>
