@@ -24,3 +24,5 @@ Oracle database needs to contain a valid table for query.
 ```
 
 ### Fingerprinting the Database
+
+### Extracting data
