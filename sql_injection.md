@@ -24,5 +24,7 @@ Oracle database needs to contain a valid table for query.
 ```
 
 ### Fingerprinting the Database
+If possible, find the specific version of the database on the backend. (see [sql_cheat_sheet.md#database-version](./cheatsheets/sql_cheat_sheet.md#database-version))
+If the injection does not return direct output of version, use context clue from input to determine the database being used.
 
 ### Extracting data
