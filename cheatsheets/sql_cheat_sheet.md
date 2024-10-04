@@ -1,7 +1,6 @@
 <h1>SQL injection cheat sheet</h1><p>
     This <a href="https://portswigger.net/web-security/sql-injection">SQL injection</a> cheat sheet contains examples of useful syntax that you can use to perform a variety of tasks that often arise when performing SQL injection attacks.
-
-    Also checkout [SQL Injection from PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20injection).
+    Also checkout <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20injection">SQL Injection from PayloadsAllTheThings</a>.
 </p>
 
 <h2>String concatenation</h2>

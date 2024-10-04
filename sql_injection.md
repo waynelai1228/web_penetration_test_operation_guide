@@ -36,4 +36,6 @@ When the output from SQL query is reflected directly back to application.
 Use the technique from [sql_cheat_sheet.md#database-contents](./cheatsheets/sql_cheat_sheet.md#database-version) to extract table names and column names to contruct data extraction query.
 
 #### Blind SQL Injection
-Use conditional response 
+Check conditional responses [sql_cheat_sheet.md#conditional-errors](./cheatsheets/sql_cheat_sheet.md#conditional-errors)
+Check time delayed responses [sql_cheat_sheet.md#time-delays](./cheatsheets/sql_cheat_sheet.md#time-delays)
+Check DNS lookup [sql_cheat_sheet.md#dns-lookup](.cheatsheets/sql_cheat_sheet.md#dns-lookup)
