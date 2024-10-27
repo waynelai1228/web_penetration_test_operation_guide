@@ -1,0 +1,21 @@
+{random_string}
+&
+"
+'
+<
+>
+&amp;
+&lt;
+&gt;
+&#034;
+&quot;
+&#039;
+&apos;
+
+<script>alert(document.domain)</script>
+<SCRIPT>alert(document.domain)</SCRIPT>
+<ScRiPt>alert(document.domain)</sCrIpt>
+<img src="javascript:alert(document.domain);">
+<IMG src="javascript:alert(document.domain);">
+
+" onload="javascript:alert(document.domain)"
