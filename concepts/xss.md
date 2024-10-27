@@ -1,6 +1,6 @@
 # Cross-Site Scripting (XSS)
 
-** Impact **
+**Impact**
 Allows attacker to:
 - circumvent same origin policy
 - masquerade as victim
