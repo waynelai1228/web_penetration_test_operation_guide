@@ -36,7 +36,7 @@ Some applications allow certain HTML tags to be included in user input. Check if
 If the user input is reflected in tag attributes and it is possible to escape the HTML attrbitue, this can lead to XSS by specifying malicious tag attributes.
 
 ### DOM-based XSS
-Look for DOM sinks.
+Look for [DOM sinks](/attack_sinks/dom_xss_sinks.md).
 
 ### Dangling Markup Injection
 Where XSS is not possible, try using payload like the following:
