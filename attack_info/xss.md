@@ -6,8 +6,6 @@ Check for any user input or data input being written to HTML wihtout sanitizatio
 ## Dynamic Testing Detection
 Send unique strings to user inputs and see if any input is reflected back to any components on the web page.
 
-## Exploitation
-
 ### Encoding
 Check encodings of the following characters being reflected in HTML
 ```
